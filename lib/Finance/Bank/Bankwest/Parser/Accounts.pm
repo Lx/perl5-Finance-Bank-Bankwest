@@ -1,0 +1,67 @@
+package Finance::Bank::Bankwest::Parser::Accounts;
+# ABSTRACT: Account Balances web page parser
+
+=head1 DESCRIPTION
+
+This module holds the logic for identifying a Bankwest Online Banking
+Account Balances page, and extracting the details of each account from
+it as L<Finance::Bank::Bankwest::Account> objects.
+
+=head1 SEE ALSO
+
+L<Finance::Bank::Bankwest::Account>
+L<Finance::Bank::Bankwest::Parser>
+L<Finance::Bank::Bankwest::Session/accounts>
+L<Finance::Bank::Bankwest::SessionFromLogin>
+
+=cut
+
+## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
+use MooseX::Declare;
+class Finance::Bank::Bankwest::Parser::Accounts
+    extends Finance::Bank::Bankwest::Parser
+{
+    use Finance::Bank::Bankwest::Account ();
+    use Web::Scraper qw{ scraper process };
+
+    my $scraper = scraper {
+        process
+            '#_ctl0_ContentMain_grdBalances tbody tr',
+            'accts[]' => scraper {
+                process '//td[1]', 'name'               => 'TEXT';
+                process '//td[2]', 'number'             => 'TEXT';
+                process '//td[3]', 'balance'            => 'TEXT';
+                process '//td[4]', 'credit_limit'       => 'TEXT';
+                process '//td[5]', 'uncleared_funds'    => 'TEXT';
+                process '//td[6]', 'available_balance'  => 'TEXT';
+            };
+    };
+
+    has 'scrape' => (
+        init_arg    => undef,
+        lazy        => 1,
+        is          => 'ro',
+        isa         => 'HashRef[ArrayRef[HashRef[Str]]]',
+        default     => sub { $scraper->scrape( shift->response ) },
+    );
+
+    method TEST {
+        $self->bad_response if not $self->scrape->{'accts'};
+    }
+
+    method PARSE {
+        my @accts;
+        for my $acct (@{ $self->scrape->{'accts'} }) {
+            for (qw{
+                balance
+                credit_limit
+                uncleared_funds
+                available_balance
+            }) {
+                $acct->{$_} =~ tr{$,}{}d;
+            }
+            push @accts, Finance::Bank::Bankwest::Account->new($acct);
+        }
+        return @accts;
+    }
+}
