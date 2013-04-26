@@ -45,7 +45,7 @@ further details on what can be achieved within a session.
 The code contained in this distribution is B<not endorsed by Bankwest>
 as an official means of accessing banking data.  It is entirely written
 and provided by a third party, and B<Bankwest will not provide support>
-for this distribution if approached for it.
+for this distribution if approached for it (see L</SUPPORT>).
 
 You should audit the source code of this distribution in order to
 satisfy yourself that your banking details are only being used in a

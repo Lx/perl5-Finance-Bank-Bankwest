@@ -44,6 +44,7 @@ established session using L<Finance::Bank::Bankwest/login>.
 
 L<Finance::Bank::Bankwest/login>
 L<Finance::Bank::Bankwest::Account>
+L<Finance::Bank::Bankwest::Error::ExportFailed>
 L<Finance::Bank::Bankwest::Transaction>
 
 =cut
@@ -139,7 +140,7 @@ information is returned per account.
     }
 
 =method transactions
-L<Finance::Bank::Bankwest::Error::ExportFailed>
+
     @txns = $session->transactions(
         account     => '303-111 0012345',   # required
         from_date   => '31/01/2013',        # required
