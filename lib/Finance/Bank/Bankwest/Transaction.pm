@@ -13,6 +13,10 @@ WDL
     $transaction->amount;       # -10.00
     $transaction->type;         # 'FEE'
 
+    SAME_TRANSACTION if $this_txn->equals($other_txn);
+    SAME_TRANSACTION if $this_txn eq $other_txn;
+    DIFFERENT_TRANSACTION if $this_txn ne $other_txn;
+
 =head1 DESCRIPTION
 
 Instances of this module are returned by
@@ -117,7 +121,7 @@ L<Finance::Bank::Bankwest::Session/transactions>
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
 use MooseX::Declare;
-class Finance::Bank::Bankwest::Transaction {
+class Finance::Bank::Bankwest::Transaction is dirty {
 
     use MooseX::StrictConstructor;
 
@@ -130,4 +134,43 @@ class Finance::Bank::Bankwest::Transaction {
     ) {
         has $_->[0] => ( isa => $_->[1], is => 'ro', required => 1 );
     }
+
+=method equals
+
+    if ($this_txn->equals($other_txn)) {
+        # $this_txn and $other_txn represent the exact same transaction
+        ...
+    }
+
+True if both this transaction and the specified one represent an
+identical transaction; false otherwise.
+
+Perl's C<eq> and C<ne> operators are also L<overload>-ed for
+Transaction objects, allowing the following code to work as expected:
+
+    if ($this_txn eq $other_txn) {
+        # $this_txn and $other_txn represent the exact same transaction
+        ...
+    }
+
+    if ($this_txn ne $other_txn) {
+        # $this_txn and $other_txn DO NOT represent the exact same transaction
+        ...
+    }
+
+=cut
+
+    method equals(Finance::Bank::Bankwest::Transaction $other) {
+        for (qw{ date narrative cheque_num amount type }) {
+            next if not defined $self->$_ and not defined $other->$_;
+            return if defined $self->$_ and not defined $other->$_;
+            return if defined $other->$_ and not defined $self->$_;
+            return if $self->$_ ne $other->$_;
+        }
+        return 1;
+    }
+
+    clean;
+    use overload 'eq' => sub { shift->equals(shift) };
+    use overload 'ne' => sub { not shift->equals(shift) };
 }
