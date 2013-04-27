@@ -25,7 +25,7 @@ class Finance::Bank::Bankwest::Parser::TransactionExport
 {
     use Finance::Bank::Bankwest::Transaction ();
     use IO::String ();
-    use Text::CSV_XS ();
+    use Text::CSV_XS 0.66 (); # for "empty_is_undef" attribute
 
     method TEST {
         $self->bad_response
@@ -36,7 +36,6 @@ class Finance::Bank::Bankwest::Parser::TransactionExport
         my $io = IO::String->new( $self->response->content_ref );
         my $csv = Text::CSV_XS->new({
             auto_diag       => 2,
-            diag_verbose    => 1,
             empty_is_undef  => 1,
         });
         $csv->column_names( $csv->getline($io) );
