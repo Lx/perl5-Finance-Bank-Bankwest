@@ -30,7 +30,7 @@ test 'stringification' => sub {
     my $self = shift;
     my $text = $self->text;
     plan skip_all => 'this error class is not instantiated'
-        if not length $text;
+        if not defined $text;
 
     throws_ok
         { $self->full_class->throw( $self->args ) }

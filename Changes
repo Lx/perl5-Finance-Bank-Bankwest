@@ -9,6 +9,8 @@ Revision history for Perl extension Finance-Bank-Bankwest
 
   - Ensure that Throwable::Error is identified as a dependency.
 
+  - Stop one of the tests from emitting a warning.
+
 1.0.1   2013-04-26
 
   - Minor documentation adjustments.
