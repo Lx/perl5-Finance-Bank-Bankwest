@@ -7,6 +7,8 @@ Revision history for Perl extension Finance-Bank-Bankwest
 
   - Require a less recent version of Text::CSV_XS.
 
+  - Ensure that Throwable::Error is identified as a dependency.
+
 1.0.1   2013-04-26
 
   - Minor documentation adjustments.
