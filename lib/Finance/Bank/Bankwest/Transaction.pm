@@ -141,7 +141,8 @@ class Finance::Bank::Bankwest::Transaction is dirty {
         [ amount        => 'Maybe[Num]' ],
         [ type          => 'Str'        ],
     ) {
-        has $_->[0] => ( isa => $_->[1], is => 'ro', required => 1 );
+        my ($attr, $type) = @$_;
+        has $attr => ( isa => $type, is => 'ro', required => 1 );
     }
 
     has 'date_dt' => (
