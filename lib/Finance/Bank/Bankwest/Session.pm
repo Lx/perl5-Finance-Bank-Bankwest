@@ -66,6 +66,21 @@ class Finance::Bank::Bankwest::Session {
         init_arg    => 'mech',
     };
 
+=attr mech
+
+The L<WWW::Mechanize> instance used to communicate with the Bankwest
+Online Banking server.  Needs to be pre-populated with the correct
+cookies.  Required; use L<Finance::Bank::Bankwest/login> to obtain a
+session object with the right one of these.
+
+=cut
+
+    has 'mech' => (
+        is          => 'ro',
+        isa         => 'WWW::Mechanize',
+        required    => 1,
+    );
+
 =attr accounts_uri
 
 The location of the page holding a list of accounts and their balances.
@@ -102,21 +117,6 @@ operation.
             default     => sub { URI->new($uri) },
         );
     }
-
-=attr mech
-
-The L<WWW::Mechanize> instance used to communicate with the Bankwest
-Online Banking server.  Needs to be pre-populated with the correct
-cookies.  Required; use L<Finance::Bank::Bankwest/login> to obtain a
-session object with the right one of these.
-
-=cut
-
-    has 'mech' => (
-        is          => 'ro',
-        isa         => 'WWW::Mechanize',
-        required    => 1,
-    );
 
 =method accounts
 
