@@ -8,6 +8,7 @@ WDL
 =head1 SYNOPSIS
 
     $transaction->date;         # '31/12/2012'
+    $transaction->date_dt;      # a DateTime instance
     $transaction->narrative;    # '1 BANK CHEQUE FEE - BWA CUSTOMER'
     $transaction->cheque_num;   # undef
     $transaction->amount;       # -10.00
@@ -26,6 +27,14 @@ L<Finance::Bank::Bankwest::Session/transactions>.
 
 A string in C<DD/MM/YYYY> format representing the date of the
 transaction.
+
+=attr date_dt
+
+The L</date> as a L<DateTime> instance with a floating time zone.
+
+I<require>-s the DateTime module when used.  C<use DateTime> in any
+code that relies on this attribute to prevent runtime failures caused
+by the DateTime module not being installed.
 
 =attr narrative
 
@@ -133,6 +142,23 @@ class Finance::Bank::Bankwest::Transaction is dirty {
         [ type          => 'Str'        ],
     ) {
         has $_->[0] => ( isa => $_->[1], is => 'ro', required => 1 );
+    }
+
+    has 'date_dt' => (
+        init_arg    => undef,
+        isa         => 'DateTime',
+        is          => 'ro',
+        lazy_build  => 1,
+    );
+    method _build_date_dt {
+        require DateTime;
+        my ($dd, $mm, $yyyy)
+            = shift->date =~ m( ^ (\d\d) / (\d\d) / (\d\d\d\d) $ )x;
+        return DateTime->new(
+            day     => $dd,
+            month   => $mm,
+            year    => $yyyy,
+        );
     }
 
 =method equals

@@ -52,5 +52,13 @@ test 'equals method false' => sub {
     }
 };
 
+test 'date_dt method' => sub {
+    plan skip_all => 'DateTime not installed'
+        if not eval { require DateTime; 1 };
+    my $txn = Finance::Bank::Bankwest::Transaction->new( %good_args );
+    is $txn->date_dt->strftime('%d/%m/%Y'), $txn->date,
+        'DateTime date must match string date';
+};
+
 run_me;
 done_testing;
