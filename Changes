@@ -2,6 +2,8 @@ Revision history for Perl extension Finance-Bank-Bankwest
 
 {{$NEXT}}
 
+1.2.0   2013-05-02
+
   - Add a "date_dt" attribute to Transaction objects to prepare a
     DateTime instance of the transaction date if requested.
 
