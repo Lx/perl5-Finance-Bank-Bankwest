@@ -36,7 +36,7 @@ class Finance::Bank::Bankwest::SessionFromLogin {
 
     use Finance::Bank::Bankwest::Parsers ();
     use Finance::Bank::Bankwest::Session ();
-    use MooseX::StrictConstructor;
+    use MooseX::StrictConstructor; # no exports
     use URI ();
     use TryCatch; # for "try" and "catch"
     use WWW::Mechanize ();

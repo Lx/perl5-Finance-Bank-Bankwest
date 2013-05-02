@@ -29,7 +29,7 @@ use MooseX::Declare;
 class Finance::Bank::Bankwest::Error
     extends Throwable::Error
 {
-    use MooseX::StrictConstructor;
+    use MooseX::StrictConstructor; # no exports
 
 =method MESSAGE
 

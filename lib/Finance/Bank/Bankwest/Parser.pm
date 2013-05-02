@@ -27,7 +27,7 @@ class Finance::Bank::Bankwest::Parser {
 
     use Carp 'croak';
     use Finance::Bank::Bankwest::Error::BadResponse ();
-    use MooseX::StrictConstructor;
+    use MooseX::StrictConstructor; # no exports
     use MooseX::Types; # for "class_type"
 
     # Allow instantiation via ->new($http_response).

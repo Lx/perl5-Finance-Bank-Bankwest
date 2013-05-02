@@ -132,7 +132,7 @@ L<Finance::Bank::Bankwest::Session/transactions>
 use MooseX::Declare;
 class Finance::Bank::Bankwest::Transaction is dirty {
 
-    use MooseX::StrictConstructor;
+    use MooseX::StrictConstructor; #no exports
 
     for (
         [ date          => 'Str'        ],

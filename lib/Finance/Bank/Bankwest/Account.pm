@@ -56,7 +56,7 @@ L<Finance::Bank::Bankwest::Session/accounts>
 use MooseX::Declare;
 class Finance::Bank::Bankwest::Account {
 
-    use MooseX::StrictConstructor;
+    use MooseX::StrictConstructor; # no exports
 
     for (
         [ name              => 'Str' ],

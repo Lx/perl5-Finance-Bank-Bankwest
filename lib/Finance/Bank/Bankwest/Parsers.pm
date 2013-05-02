@@ -26,7 +26,7 @@ class Finance::Bank::Bankwest::Parsers {
 
     use Finance::Bank::Bankwest::Error::BadResponse ();
     use Module::Pluggable::Object ();
-    use MooseX::StrictConstructor;
+    use MooseX::StrictConstructor; # no exports
     use TryCatch; # for "try" and "catch"
 
     my $module_base = 'Finance::Bank::Bankwest::Parser';

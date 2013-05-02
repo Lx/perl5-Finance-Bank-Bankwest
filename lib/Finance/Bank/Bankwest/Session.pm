@@ -54,7 +54,7 @@ use MooseX::Declare;
 class Finance::Bank::Bankwest::Session {
 
     use Finance::Bank::Bankwest::Parsers ();
-    use MooseX::StrictConstructor;
+    use MooseX::StrictConstructor; # no exports
     use MooseX::Types; # for "class_type"
     use TryCatch; # for "try" and "catch"
     use URI ();
