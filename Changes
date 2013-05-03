@@ -2,6 +2,8 @@ Revision history for Perl extension Finance-Bank-Bankwest
 
 {{$NEXT}}
 
+1.2.1   2013-05-03
+
   - Remove URI as a run-time dependency.
 
   - Don't identify core modules as distribution dependencies.
