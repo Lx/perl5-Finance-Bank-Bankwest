@@ -4,6 +4,8 @@ Revision history for Perl extension Finance-Bank-Bankwest
 
   - Remove URI as a run-time dependency.
 
+  - Don't identify core modules as distribution dependencies.
+
 1.2.0   2013-05-02
 
   - Add a "date_dt" attribute to Transaction objects to prepare a
