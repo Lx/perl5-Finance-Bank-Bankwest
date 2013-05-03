@@ -50,12 +50,6 @@ test 'test calls TEST' => sub {
     throws_ok { t::ParserConsumer1->test($r) } qr/this is TEST/;
 };
 
-test 'PARSE dies if not defined' => sub {
-    throws_ok
-        { t::ParserConsumer2->parse($r) }
-        qr/parsing is not applicable/;
-};
-
 test 'parse calls TEST first' => sub {
     $been_tested = 0;
     throws_ok

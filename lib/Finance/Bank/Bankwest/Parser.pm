@@ -25,7 +25,6 @@ L<Finance::Bank::Bankwest::Parser::TransactionSearch>
 use MooseX::Declare;
 class Finance::Bank::Bankwest::Parser {
 
-    use Carp 'croak';
     use Finance::Bank::Bankwest::Error::BadResponse ();
     use MooseX::StrictConstructor; # no exports
     use MooseX::Types; # for "class_type"
@@ -103,8 +102,5 @@ internally by L</parse>.
         my $self = $class->new($response);
         $self->TEST;
         return $self->PARSE;
-    }
-    method PARSE {
-        croak 'parsing is not applicable to this module';
     }
 }
