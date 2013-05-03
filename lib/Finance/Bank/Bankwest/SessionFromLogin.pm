@@ -37,7 +37,6 @@ class Finance::Bank::Bankwest::SessionFromLogin {
     use Finance::Bank::Bankwest::Parsers ();
     use Finance::Bank::Bankwest::Session ();
     use MooseX::StrictConstructor; # no exports
-    use URI ();
     use TryCatch; # for "try" and "catch"
     use WWW::Mechanize ();
 
@@ -145,12 +144,9 @@ normal operation.
 
 =cut
 
-    my $login_uri = 'https://ibs.bankwest.com.au/BWLogin/rib.aspx';
     has 'login_uri' => (
         is          => 'ro',
-        isa         => 'URI',
-        required    => 1,
-        lazy        => 1,
-        default     => sub { URI->new( $login_uri ) },
+        isa         => 'Str',
+        default     => 'https://ibs.bankwest.com.au/BWLogin/rib.aspx',
     );
 }

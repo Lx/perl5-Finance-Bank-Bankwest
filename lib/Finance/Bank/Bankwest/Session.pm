@@ -57,7 +57,6 @@ class Finance::Bank::Bankwest::Session {
     use MooseX::StrictConstructor; # no exports
     use MooseX::Types; # for "class_type"
     use TryCatch; # for "try" and "catch"
-    use URI ();
 
     # Allow instantiation via ->new($mech).
     class_type 'WWW::Mechanize';
@@ -111,10 +110,8 @@ operation.
         );
         has "${attr}_uri" => (
             is          => 'ro',
-            isa         => 'URI',
-            required    => 1,
-            lazy        => 1,
-            default     => sub { URI->new($uri) },
+            isa         => 'Str',
+            default     => $uri,
         );
     }
 
