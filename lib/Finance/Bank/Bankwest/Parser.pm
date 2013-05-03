@@ -73,16 +73,16 @@ Inspect the supplied L<HTTP::Response> object.  Return without error if
 the response is recognised and acceptable, or throw an appropriate
 exception.
 
+=method TEST
+
+Must be implemented by subclasses; called internally by L</test> and
+L</parse>.
+
 =cut
 
     method test($class: $response) {
         $class->new($response)->TEST;
     }
-
-=method TEST
-
-Must be implemented by subclasses; called internally by L</test> and
-L</parse>.
 
 =method parse
 
@@ -92,14 +92,6 @@ Produce and return a specific data structure from the supplied
 L<HTTP::Response> object, or throw an appropriate exception if the
 response is not recognised and acceptable.
 
-=cut
-
-    method parse($class: $response) {
-        my $self = $class->new($response);
-        $self->TEST;
-        return $self->PARSE;
-    }
-
 =method PARSE
 
 Implemented by subclasses if parsing is applicable to them; called
@@ -107,6 +99,11 @@ internally by L</parse>.
 
 =cut
 
+    method parse($class: $response) {
+        my $self = $class->new($response);
+        $self->TEST;
+        return $self->PARSE;
+    }
     method PARSE {
         croak 'parsing is not applicable to this module';
     }
