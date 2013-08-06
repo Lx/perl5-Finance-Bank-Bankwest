@@ -106,9 +106,8 @@ progress on the request by the system.
 
 =head2 Source Code
 
-The source code for this distribution is available
-online in a L<Git|http://git-scm.com/> repository.
-Please feel welcome to contribute patches.
+The source code for this distribution is available online in a L<Git|http://git-scm.com/> repository.  Please feel welcome to contribute patches.
+
 
 L<https://github.com/lx/perl5-Finance-Bank-Bankwest>
 
