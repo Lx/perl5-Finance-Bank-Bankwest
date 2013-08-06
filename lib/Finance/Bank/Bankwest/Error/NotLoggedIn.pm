@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::Error::NotLoggedIn;
 {
-  $Finance::Bank::Bankwest::Error::NotLoggedIn::VERSION = '1.2.3';
+  $Finance::Bank::Bankwest::Error::NotLoggedIn::VERSION = '1.2.4';
 }
 # ABSTRACT: non-existent session exception superclass
 
@@ -24,7 +24,7 @@ Finance::Bank::Bankwest::Error::NotLoggedIn - non-existent session exception sup
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.3.
+This module is part of distribution Finance-Bank-Bankwest v1.2.4.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

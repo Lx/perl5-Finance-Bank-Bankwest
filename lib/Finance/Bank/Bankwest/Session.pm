@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::Session;
 {
-  $Finance::Bank::Bankwest::Session::VERSION = '1.2.3';
+  $Finance::Bank::Bankwest::Session::VERSION = '1.2.4';
 }
 # ABSTRACT: operate on an established Bankwest Online Banking session
 
@@ -121,7 +121,7 @@ Finance::Bank::Bankwest::Session - operate on an established Bankwest Online Ban
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.3.
+This module is part of distribution Finance-Bank-Bankwest v1.2.4.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

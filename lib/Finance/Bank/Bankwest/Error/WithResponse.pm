@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::Error::WithResponse;
 {
-  $Finance::Bank::Bankwest::Error::WithResponse::VERSION = '1.2.3';
+  $Finance::Bank::Bankwest::Error::WithResponse::VERSION = '1.2.4';
 }
 # ABSTRACT: make exceptions hold an L<HTTP::Response>
 
@@ -37,7 +37,7 @@ Finance::Bank::Bankwest::Error::WithResponse - make exceptions hold an L<HTTP::R
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.3.
+This module is part of distribution Finance-Bank-Bankwest v1.2.4.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

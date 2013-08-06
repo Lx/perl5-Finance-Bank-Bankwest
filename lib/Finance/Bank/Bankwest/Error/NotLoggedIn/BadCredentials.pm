@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::Error::NotLoggedIn::BadCredentials;
 {
-  $Finance::Bank::Bankwest::Error::NotLoggedIn::BadCredentials::VERSION = '1.2.3';
+  $Finance::Bank::Bankwest::Error::NotLoggedIn::BadCredentials::VERSION = '1.2.4';
 }
 # ABSTRACT: invalid PAN/access code combination exception
 
@@ -28,7 +28,7 @@ Finance::Bank::Bankwest::Error::NotLoggedIn::BadCredentials - invalid PAN/access
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.3.
+This module is part of distribution Finance-Bank-Bankwest v1.2.4.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

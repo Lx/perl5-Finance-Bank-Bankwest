@@ -21,7 +21,6 @@ my %WriteMakefileArgs = (
   "NAME" => "Finance::Bank::Bankwest",
   "PREREQ_PM" => {
     "HTTP::Response::Switch" => "1.001000",
-    "HTTP::Response::Switch::Handler" => "1.000000",
     "IO::String" => 0,
     "MooseX::Declare" => 0,
     "MooseX::OneArgNew" => 0,
@@ -31,13 +30,9 @@ my %WriteMakefileArgs = (
     "Throwable::Error" => "0.101110",
     "TryCatch" => 0,
     "WWW::Mechanize" => 0,
-    "Web::Scraper" => 0,
-    "overload" => 0,
-    "strict" => 0,
-    "warnings" => 0
+    "Web::Scraper" => 0
   },
   "TEST_REQUIRES" => {
-    "File::Find" => 0,
     "File::Temp" => 0,
     "HTTP::Response" => 0,
     "Module::Loaded" => 0,
@@ -45,11 +40,10 @@ my %WriteMakefileArgs = (
     "Test::Exception" => 0,
     "Test::More" => 0,
     "Test::Routine" => 0,
-    "Test::Routine::Util" => 0,
     "URI::file" => 0,
     "parent" => 0
   },
-  "VERSION" => "1.2.3",
+  "VERSION" => "1.2.4",
   "test" => {
     "TESTS" => "t/*.t"
   }

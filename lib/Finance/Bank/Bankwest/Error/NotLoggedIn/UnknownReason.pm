@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::Error::NotLoggedIn::UnknownReason;
 {
-  $Finance::Bank::Bankwest::Error::NotLoggedIn::UnknownReason::VERSION = '1.2.3';
+  $Finance::Bank::Bankwest::Error::NotLoggedIn::UnknownReason::VERSION = '1.2.4';
 }
 # ABSTRACT: general Bankwest session failure exception
 
@@ -29,7 +29,7 @@ Finance::Bank::Bankwest::Error::NotLoggedIn::UnknownReason - general Bankwest se
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.3.
+This module is part of distribution Finance-Bank-Bankwest v1.2.4.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

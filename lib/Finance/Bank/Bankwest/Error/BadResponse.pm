@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::Error::BadResponse;
 {
-  $Finance::Bank::Bankwest::Error::BadResponse::VERSION = '1.2.3';
+  $Finance::Bank::Bankwest::Error::BadResponse::VERSION = '1.2.4';
 }
 # ABSTRACT: unexpected remote server response exception
 
@@ -28,7 +28,7 @@ Finance::Bank::Bankwest::Error::BadResponse - unexpected remote server response 
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.3.
+This module is part of distribution Finance-Bank-Bankwest v1.2.4.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 
