@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::Transaction;
 {
-  $Finance::Bank::Bankwest::Transaction::VERSION = '1.2.2';
+  $Finance::Bank::Bankwest::Transaction::VERSION = '1.2.3';
 }
 # ABSTRACT: representation of an account transaction
 
@@ -68,7 +68,7 @@ Finance::Bank::Bankwest::Transaction - representation of an account transaction
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.2.
+This module is part of distribution Finance-Bank-Bankwest v1.2.3.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

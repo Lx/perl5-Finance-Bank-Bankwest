@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::Parser::TransactionSearch;
 {
-  $Finance::Bank::Bankwest::Parser::TransactionSearch::VERSION = '1.2.2';
+  $Finance::Bank::Bankwest::Parser::TransactionSearch::VERSION = '1.2.3';
 }
 # ABSTRACT: transaction search page parser
 
@@ -75,7 +75,7 @@ Finance::Bank::Bankwest::Parser::TransactionSearch - transaction search page par
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.2.
+This module is part of distribution Finance-Bank-Bankwest v1.2.3.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

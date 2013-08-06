@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::SessionFromLogin;
 {
-  $Finance::Bank::Bankwest::SessionFromLogin::VERSION = '1.2.2';
+  $Finance::Bank::Bankwest::SessionFromLogin::VERSION = '1.2.3';
 }
 # ABSTRACT: create a session using a PAN and access code
 
@@ -90,7 +90,7 @@ Finance::Bank::Bankwest::SessionFromLogin - create a session using a PAN and acc
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.2.
+This module is part of distribution Finance-Bank-Bankwest v1.2.3.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

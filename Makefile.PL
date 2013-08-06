@@ -20,7 +20,6 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Finance::Bank::Bankwest",
   "PREREQ_PM" => {
-    "DateTime" => 0,
     "HTTP::Response::Switch" => "1.001000",
     "HTTP::Response::Switch::Handler" => "1.000000",
     "IO::String" => 0,
@@ -50,7 +49,7 @@ my %WriteMakefileArgs = (
     "URI::file" => 0,
     "parent" => 0
   },
-  "VERSION" => "1.2.2",
+  "VERSION" => "1.2.3",
   "test" => {
     "TESTS" => "t/*.t"
   }
