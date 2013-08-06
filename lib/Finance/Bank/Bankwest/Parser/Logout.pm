@@ -8,15 +8,16 @@ as a Bankwest Online Banking logout web page.
 
 =head1 SEE ALSO
 
-L<Finance::Bank::Bankwest::Parser>
 L<Finance::Bank::Bankwest::Session/logout>
+L<HTTP::Response::Switch::Handler>
 
 =cut
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
 use MooseX::Declare;
+use HTTP::Response::Switch::Handler 1.000000;
 class Finance::Bank::Bankwest::Parser::Logout
-    extends Finance::Bank::Bankwest::Parser
+    with HTTP::Response::Switch::Handler
 {
     use Web::Scraper qw{ scraper process };
 
@@ -25,9 +26,9 @@ class Finance::Bank::Bankwest::Parser::Logout
         process '#contentColumn', 'text' => 'TEXT';
     };
 
-    method TEST {
+    method handle {
         my $scrape = $scraper->scrape($self->response);
-        $self->bad_response
+        $self->decline
             if not defined $scrape->{'text'}
                 or index($scrape->{'text'}, $token) < 0;
     }

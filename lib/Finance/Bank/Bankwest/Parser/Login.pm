@@ -20,16 +20,17 @@ L<Finance::Bank::Bankwest::Error::NotLoggedIn::BadCredentials>
 L<Finance::Bank::Bankwest::Error::NotLoggedIn::SubsequentLogin>
 L<Finance::Bank::Bankwest::Error::NotLoggedIn::Timeout>
 L<Finance::Bank::Bankwest::Error::NotLoggedIn::UnknownReason>
-L<Finance::Bank::Bankwest::Parser>
 L<Finance::Bank::Bankwest::Session>
 L<Finance::Bank::Bankwest::SessionFromLogin>
+L<HTTP::Response::Switch::Handler>
 
 =cut
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
 use MooseX::Declare;
+use HTTP::Response::Switch::Handler 1.000000;
 class Finance::Bank::Bankwest::Parser::Login
-    extends Finance::Bank::Bankwest::Parser
+    with HTTP::Response::Switch::Handler
 {
     use Finance::Bank::Bankwest::Error::NotLoggedIn::BadCredentials ();
     use Finance::Bank::Bankwest::Error::NotLoggedIn::SubsequentLogin ();
@@ -43,9 +44,9 @@ class Finance::Bank::Bankwest::Parser::Login
         process '#AuthUC_lblMessage', 'bc' => 'TEXT';
         process '#lblAdditionalLogonMessage', 'sl' => 'TEXT';
     };
-    method TEST {
+    method handle {
         my $s = $scraper->scrape($self->response);
-        $self->bad_response
+        $self->decline
             if not defined $s->{'form'}
                 or $s->{'form'} !~ m{ ^ \s* Login \s* $ }x;
         Finance::Bank::Bankwest::Error::NotLoggedIn::Timeout->throw

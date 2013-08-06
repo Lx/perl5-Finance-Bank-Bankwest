@@ -3,10 +3,9 @@ use Test::More;
 
 run_tests(
     undef,
-    't::lib::Test::ParserSubclass' => {
+    't::lib::Test::Parser' => {
         parser      => 'Logout',
         test_ok     => 'logged-out',
-        test_fail   => { 'google' => 'BadResponse' },
     },
 );
 done_testing;

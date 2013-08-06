@@ -130,9 +130,9 @@ information is returned per account.
 =cut
 
     method accounts {
-        return Finance::Bank::Bankwest::Parsers->parse(
+        return Finance::Bank::Bankwest::Parsers->handle(
             $self->mech->get($self->accounts_uri),
-            qw{ Accounts Login },
+            'Accounts',
         );
     }
 
@@ -201,9 +201,9 @@ date of the following Monday.
         # __VIEWSTATE, __VS) need to be submitted with the request, so
         # GET the page first.
         try {
-            Finance::Bank::Bankwest::Parsers->test(
+            Finance::Bank::Bankwest::Parsers->handle(
                 $self->mech->get($self->transactions_uri),
-                qw{ TransactionSearch Login },
+                'TransactionSearch',
             );
         }
         catch (
@@ -231,9 +231,9 @@ date of the following Monday.
         # Assume that a CSV file has been returned.  Problems with the
         # supplied parameters would cause the form to be presented
         # again.  If nothing else, maybe a session problem?
-        return Finance::Bank::Bankwest::Parsers->parse(
+        return Finance::Bank::Bankwest::Parsers->handle(
             $self->mech->res,
-            qw{ TransactionExport TransactionSearch Login },
+            qw{ TransactionExport TransactionSearch },
         );
     }
 
@@ -250,9 +250,9 @@ that Bankwest's server can release resources used by the session.
 =cut
 
     method logout {
-        Finance::Bank::Bankwest::Parsers->test(
+        Finance::Bank::Bankwest::Parsers->handle(
             $self->mech->get($self->logout_uri),
-            qw{ Logout Login },
+            'Logout',
         );
     }
 }

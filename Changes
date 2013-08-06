@@ -2,6 +2,9 @@ Revision history for Perl extension Finance-Bank-Bankwest
 
 {{$NEXT}}
 
+  - Move generic web page handling logic into a dependency
+    (HTTP::Response::Switch).
+
 1.2.1   2013-05-03
 
   - Remove URI as a run-time dependency.

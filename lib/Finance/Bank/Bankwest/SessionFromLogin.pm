@@ -108,7 +108,7 @@ L<Finance::Bank::Bankwest::Error::WithResponse/response>.
 
         # Is this actually a login page?
         try {
-            Finance::Bank::Bankwest::Parsers->test($ua->res, 'Login');
+            Finance::Bank::Bankwest::Parsers->handle($ua->res);
         }
         catch (Finance::Bank::Bankwest::Error::NotLoggedIn $e) {
             # Generally the appearance of a login page is a bad thing,
@@ -127,10 +127,7 @@ L<Finance::Bank::Bankwest::Error::WithResponse/response>.
 
         # Does the result look like an Account Balances page?
         # If not, determine and throw the appropriate exception.
-        Finance::Bank::Bankwest::Parsers->test(
-            $ua->res,
-            qw{ Accounts Login },
-        );
+        Finance::Bank::Bankwest::Parsers->handle($ua->res, 'Accounts');
 
         # If this point is reached, the session is established.
         return Finance::Bank::Bankwest::Session->new( $ua );

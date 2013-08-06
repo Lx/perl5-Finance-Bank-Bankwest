@@ -25,14 +25,15 @@ exception is thrown.
 
 L<Finance::Bank::Bankwest::Error::ExportFailed>
 L<Finance::Bank::Bankwest::Error::ExportFailed::UnknownReason>
-L<Finance::Bank::Bankwest::Parser>
+L<HTTP::Response::Switch::Handler>
 
 =cut
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
 use MooseX::Declare;
+use HTTP::Response::Switch::Handler 1.000000;
 class Finance::Bank::Bankwest::Parser::TransactionSearch
-    extends Finance::Bank::Bankwest::Parser
+    with HTTP::Response::Switch::Handler
 {
     use Finance::Bank::Bankwest::Error::ExportFailed ();
     use Finance::Bank::Bankwest::Error::ExportFailed::UnknownReason ();
@@ -54,10 +55,10 @@ class Finance::Bank::Bankwest::Parser::TransactionSearch
         process '#_ctl0_ContentMain_valToDate',
             'tdate_style' => '@style';
     };
-    method TEST {
+    method handle {
         my $scrape = $scraper->scrape($self->response);
 
-        $self->bad_response if not $scrape->{'heading'}
+        $self->decline if not $scrape->{'heading'}
             or $scrape->{'heading'} !~ /^\s*Transaction\s+Search\s*$/x;
 
         my %ef;

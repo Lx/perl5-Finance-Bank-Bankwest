@@ -10,16 +10,17 @@ it as L<Finance::Bank::Bankwest::Account> objects.
 =head1 SEE ALSO
 
 L<Finance::Bank::Bankwest::Account>
-L<Finance::Bank::Bankwest::Parser>
 L<Finance::Bank::Bankwest::Session/accounts>
 L<Finance::Bank::Bankwest::SessionFromLogin>
+L<HTTP::Response::Switch::Handler>
 
 =cut
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
 use MooseX::Declare;
+use HTTP::Response::Switch::Handler 1.000000;
 class Finance::Bank::Bankwest::Parser::Accounts
-    extends Finance::Bank::Bankwest::Parser
+    with HTTP::Response::Switch::Handler
 {
     use Finance::Bank::Bankwest::Account ();
     use Web::Scraper qw{ scraper process };
@@ -45,11 +46,9 @@ class Finance::Bank::Bankwest::Parser::Accounts
         default     => sub { $scraper->scrape( shift->response ) },
     );
 
-    method TEST {
-        $self->bad_response if not $self->scrape->{'accts'};
-    }
+    method handle {
+        $self->decline if not $self->scrape->{'accts'};
 
-    method PARSE {
         my @accts;
         for my $acct (@{ $self->scrape->{'accts'} }) {
             for (qw{

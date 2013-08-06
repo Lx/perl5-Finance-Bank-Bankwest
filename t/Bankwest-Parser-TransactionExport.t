@@ -3,7 +3,7 @@ use Test::More;
 
 run_tests(
     undef,
-    't::lib::Test::ParserSubclass' => {
+    't::lib::Test::Parser' => {
         parser      => 'TransactionExport',
         parse_ok    => 'txn-export.csv',
         parse_type  => 'Transaction',
@@ -68,7 +68,6 @@ run_tests(
                 type        => 'WDL',
             },
         ],
-        test_fail   => { 'google' => 'BadResponse' },
     },
 );
 done_testing;
