@@ -1,1 +1,3 @@
-Finance-Bank-Bankwest-*
+/Finance-Bank-Bankwest-*.tar.gz
+/Finance-Bank-Bankwest-*/
+/.build/
