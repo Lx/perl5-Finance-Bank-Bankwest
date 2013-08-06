@@ -1,12 +1,13 @@
 package Finance::Bank::Bankwest::Error;
 {
-  $Finance::Bank::Bankwest::Error::VERSION = '1.2.1';
+  $Finance::Bank::Bankwest::Error::VERSION = '1.2.2';
 }
 # ABSTRACT: Finance-Bank-Bankwest error superclass
 
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
 use MooseX::Declare;
+use Throwable::Error 0.101110; # for bug fix
 class Finance::Bank::Bankwest::Error
     extends Throwable::Error
 {
@@ -31,7 +32,7 @@ Finance::Bank::Bankwest::Error - Finance-Bank-Bankwest error superclass
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.1.
+This module is part of distribution Finance-Bank-Bankwest v1.2.2.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

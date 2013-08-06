@@ -1,14 +1,15 @@
 package Finance::Bank::Bankwest::Parser::Login;
 {
-  $Finance::Bank::Bankwest::Parser::Login::VERSION = '1.2.1';
+  $Finance::Bank::Bankwest::Parser::Login::VERSION = '1.2.2';
 }
 # ABSTRACT: Online Banking login web page parser
 
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
 use MooseX::Declare;
+use HTTP::Response::Switch::Handler 1.000000;
 class Finance::Bank::Bankwest::Parser::Login
-    extends Finance::Bank::Bankwest::Parser
+    with HTTP::Response::Switch::Handler
 {
     use Finance::Bank::Bankwest::Error::NotLoggedIn::BadCredentials ();
     use Finance::Bank::Bankwest::Error::NotLoggedIn::SubsequentLogin ();
@@ -22,9 +23,9 @@ class Finance::Bank::Bankwest::Parser::Login
         process '#AuthUC_lblMessage', 'bc' => 'TEXT';
         process '#lblAdditionalLogonMessage', 'sl' => 'TEXT';
     };
-    method TEST {
+    method handle {
         my $s = $scraper->scrape($self->response);
-        $self->bad_response
+        $self->decline
             if not defined $s->{'form'}
                 or $s->{'form'} !~ m{ ^ \s* Login \s* $ }x;
         Finance::Bank::Bankwest::Error::NotLoggedIn::Timeout->throw
@@ -60,7 +61,7 @@ Finance::Bank::Bankwest::Parser::Login - Online Banking login web page parser
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.1.
+This module is part of distribution Finance-Bank-Bankwest v1.2.2.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 
@@ -101,15 +102,15 @@ L<Finance::Bank::Bankwest::Error::NotLoggedIn::UnknownReason>
 
 =item *
 
-L<Finance::Bank::Bankwest::Parser>
-
-=item *
-
 L<Finance::Bank::Bankwest::Session>
 
 =item *
 
 L<Finance::Bank::Bankwest::SessionFromLogin>
+
+=item *
+
+L<HTTP::Response::Switch::Handler>
 
 =back
 

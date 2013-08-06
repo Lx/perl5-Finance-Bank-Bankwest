@@ -19,7 +19,6 @@ lib/Finance/Bank/Bankwest/Error/NotLoggedIn/SubsequentLogin.pm
 lib/Finance/Bank/Bankwest/Error/NotLoggedIn/Timeout.pm
 lib/Finance/Bank/Bankwest/Error/NotLoggedIn/UnknownReason.pm
 lib/Finance/Bank/Bankwest/Error/WithResponse.pm
-lib/Finance/Bank/Bankwest/Parser.pm
 lib/Finance/Bank/Bankwest/Parser/Accounts.pm
 lib/Finance/Bank/Bankwest/Parser/Login.pm
 lib/Finance/Bank/Bankwest/Parser/Logout.pm
@@ -47,7 +46,6 @@ t/Bankwest-Parser-Login.t
 t/Bankwest-Parser-Logout.t
 t/Bankwest-Parser-TransactionExport.t
 t/Bankwest-Parser-TransactionSearch.t
-t/Bankwest-Parser.t
 t/Bankwest-Parsers.t
 t/Bankwest-Session.t
 t/Bankwest-SessionFromLogin.t
@@ -80,7 +78,7 @@ t/fixtures/txn-search-then-bad-acct.html
 t/fixtures/txn-search-then-txn-export.html
 t/fixtures/txn-search.html
 t/lib/Test/ErrorSubclass.pm
-t/lib/Test/ParserSubclass.pm
+t/lib/Test/Parser.pm
 t/lib/Test/UnexpectedParamFails.pm
 t/lib/Util/ResponseFixtures.pm
 t/release-distmeta.t
@@ -89,4 +87,3 @@ t/release-no-tabs.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
 t/release-test-version.t
-weaver.ini

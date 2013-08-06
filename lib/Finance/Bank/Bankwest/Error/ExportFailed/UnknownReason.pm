@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::Error::ExportFailed::UnknownReason;
 {
-  $Finance::Bank::Bankwest::Error::ExportFailed::UnknownReason::VERSION = '1.2.1';
+  $Finance::Bank::Bankwest::Error::ExportFailed::UnknownReason::VERSION = '1.2.2';
 }
 # ABSTRACT: general transaction CSV export failure exception
 
@@ -34,7 +34,7 @@ Finance::Bank::Bankwest::Error::ExportFailed::UnknownReason - general transactio
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.1.
+This module is part of distribution Finance-Bank-Bankwest v1.2.2.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

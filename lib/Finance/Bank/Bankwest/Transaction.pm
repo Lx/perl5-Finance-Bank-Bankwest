@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::Transaction;
 {
-  $Finance::Bank::Bankwest::Transaction::VERSION = '1.2.1';
+  $Finance::Bank::Bankwest::Transaction::VERSION = '1.2.2';
 }
 # ABSTRACT: representation of an account transaction
 
@@ -9,7 +9,7 @@ package Finance::Bank::Bankwest::Transaction;
 use MooseX::Declare;
 class Finance::Bank::Bankwest::Transaction is dirty {
 
-    use MooseX::StrictConstructor; #no exports
+    use MooseX::StrictConstructor; # no exports
 
     for (
         [ date          => 'Str'        ],
@@ -59,8 +59,8 @@ __END__
 
 =pod
 
-=for :stopwords Alex Peters authorisation BPAY CHQ DAU DEP DFD DRI EFTPOS ENQ NAR TFC TFD
-WDC WDI WDL
+=for :stopwords Alex Peters authorisation enquiry BPAY CHQ CRI DAU DIC DEP DFD DRI DRR
+EFTPOS ENQ NAR POS PPA TAC TFC TFD TFN WDC WDI WDL
 
 =head1 NAME
 
@@ -68,7 +68,7 @@ Finance::Bank::Bankwest::Transaction - representation of an account transaction
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.1.
+This module is part of distribution Finance-Bank-Bankwest v1.2.2.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 
@@ -121,73 +121,122 @@ for fee notices or declined transactions).
 
 =head2 type
 
-The transaction "type."  May be one of the following values (or even
-something else):
+The transaction "type."  May be one of the following values (although
+Bankwest may not always assign the most relevant code to a particular
+transaction):
 
 =over 6
 
 =item CHQ
 
-Debit via cheque.
+I<withdrawal (cheque)>
+
+=item CRI
+
+I<credit interest>
+
+=item DAT
+
+I<ATM deposit>
 
 =item DAU
 
-Authorisation only.
+I<debit authorisation>
+
+=item DEC
+
+I<Express Commercial Deposit>
 
 =item DEP
 
-Non-salary deposit or EFTPOS refund.
+I<deposit> (includes EFTPOS refunds)
 
 =item DFD
 
-Deposit via a Fast Deposit box.
+I<Fast Deposit Box deposit>
+
+=item DIC
+
+I<dishonoured credit>
 
 =item DID
 
-Dishonoured debit, e.g. bounced cheque.
+I<dishonoured debit> (e.g. bounced cheques)
 
 =item DRI
 
-Debit interest.
+I<debit interest>
+
+=item DRR
+
+I<debit reversal>
 
 =item ENQ
 
-Declined transaction.
+I<balance enquiry> (includes declined transactions)
 
 =item FEE
 
-Bank fee, e.g. bank cheque fee.
+I<fee raising> (e.g. bank cheque fees)
+
+=item FER
+
+I<fee refund>
 
 =item NAR
 
-Information-only transaction without a credit or debit, such as
-notification of an ATM fee being paid by Bankwest or a breakdown of
-fees included in another transaction (such as foreign currency
-conversion).
+I<narrative> (information only, e.g. notification of ATM fees paid by
+Bankwest, breakdown of foreign currency conversion fees included in
+another transaction)
+
+=item PAD
+
+I<ATM deposit>
 
 =item PAY
 
-Salary deposit.
+I<payroll> (i.e. salary deposits)
+
+=item PEN
+
+I<pension>
+
+=item PPA
+
+I<POS payment authorisation>
+
+=item TAC
+
+I<government tax adjustment (credit)>
+
+=item TAX
+
+I<government tax raising>
 
 =item TFC
 
-Internal credit from another Bankwest account.
+I<transfer (credit)>
 
 =item TFD
 
-BPAY or internal debit to another Bankwest account.
+I<transfer (debit)> (includes BPAY payments)
+
+=item TFN
+
+I<TFN raising>
 
 =item WDC
 
-Credit withdrawal.
+I<Debit MasterCard withdrawal (Australia)>
 
 =item WDI
 
-Credit withdrawal by an international merchant.
+I<Debit MasterCard withdrawal (international)>
 
 =item WDL
 
-ATM, EFTPOS or "pay anyone" withdrawal, or direct debit.
+I<withdrawal> (includes direct debits and ATM, EFTPOS and "pay anyone"
+withdrawals)
 
 =back
 

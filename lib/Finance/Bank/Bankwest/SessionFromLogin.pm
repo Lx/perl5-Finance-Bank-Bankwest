@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::SessionFromLogin;
 {
-  $Finance::Bank::Bankwest::SessionFromLogin::VERSION = '1.2.1';
+  $Finance::Bank::Bankwest::SessionFromLogin::VERSION = '1.2.2';
 }
 # ABSTRACT: create a session using a PAN and access code
 
@@ -45,7 +45,7 @@ class Finance::Bank::Bankwest::SessionFromLogin {
 
         # Is this actually a login page?
         try {
-            Finance::Bank::Bankwest::Parsers->test($ua->res, 'Login');
+            Finance::Bank::Bankwest::Parsers->handle($ua->res);
         }
         catch (Finance::Bank::Bankwest::Error::NotLoggedIn $e) {
             # Generally the appearance of a login page is a bad thing,
@@ -64,10 +64,7 @@ class Finance::Bank::Bankwest::SessionFromLogin {
 
         # Does the result look like an Account Balances page?
         # If not, determine and throw the appropriate exception.
-        Finance::Bank::Bankwest::Parsers->test(
-            $ua->res,
-            qw{ Accounts Login },
-        );
+        Finance::Bank::Bankwest::Parsers->handle($ua->res, 'Accounts');
 
         # If this point is reached, the session is established.
         return Finance::Bank::Bankwest::Session->new( $ua );
@@ -93,7 +90,7 @@ Finance::Bank::Bankwest::SessionFromLogin - create a session using a PAN and acc
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.1.
+This module is part of distribution Finance-Bank-Bankwest v1.2.2.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

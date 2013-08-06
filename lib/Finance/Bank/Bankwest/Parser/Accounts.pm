@@ -1,14 +1,15 @@
 package Finance::Bank::Bankwest::Parser::Accounts;
 {
-  $Finance::Bank::Bankwest::Parser::Accounts::VERSION = '1.2.1';
+  $Finance::Bank::Bankwest::Parser::Accounts::VERSION = '1.2.2';
 }
 # ABSTRACT: Account Balances web page parser
 
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
 use MooseX::Declare;
+use HTTP::Response::Switch::Handler 1.000000;
 class Finance::Bank::Bankwest::Parser::Accounts
-    extends Finance::Bank::Bankwest::Parser
+    with HTTP::Response::Switch::Handler
 {
     use Finance::Bank::Bankwest::Account ();
     use Web::Scraper qw{ scraper process };
@@ -34,11 +35,9 @@ class Finance::Bank::Bankwest::Parser::Accounts
         default     => sub { $scraper->scrape( shift->response ) },
     );
 
-    method TEST {
-        $self->bad_response if not $self->scrape->{'accts'};
-    }
+    method handle {
+        $self->decline if not $self->scrape->{'accts'};
 
-    method PARSE {
         my @accts;
         for my $acct (@{ $self->scrape->{'accts'} }) {
             for (qw{
@@ -67,7 +66,7 @@ Finance::Bank::Bankwest::Parser::Accounts - Account Balances web page parser
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.1.
+This module is part of distribution Finance-Bank-Bankwest v1.2.2.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 
@@ -89,15 +88,15 @@ L<Finance::Bank::Bankwest::Account>
 
 =item *
 
-L<Finance::Bank::Bankwest::Parser>
-
-=item *
-
 L<Finance::Bank::Bankwest::Session/accounts>
 
 =item *
 
 L<Finance::Bank::Bankwest::SessionFromLogin>
+
+=item *
+
+L<HTTP::Response::Switch::Handler>
 
 =back
 

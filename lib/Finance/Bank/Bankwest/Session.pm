@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::Session;
 {
-  $Finance::Bank::Bankwest::Session::VERSION = '1.2.1';
+  $Finance::Bank::Bankwest::Session::VERSION = '1.2.2';
 }
 # ABSTRACT: operate on an established Bankwest Online Banking session
 
@@ -48,9 +48,9 @@ class Finance::Bank::Bankwest::Session {
 
 
     method accounts {
-        return Finance::Bank::Bankwest::Parsers->parse(
+        return Finance::Bank::Bankwest::Parsers->handle(
             $self->mech->get($self->accounts_uri),
-            qw{ Accounts Login },
+            'Accounts',
         );
     }
 
@@ -64,9 +64,9 @@ class Finance::Bank::Bankwest::Session {
         # __VIEWSTATE, __VS) need to be submitted with the request, so
         # GET the page first.
         try {
-            Finance::Bank::Bankwest::Parsers->test(
+            Finance::Bank::Bankwest::Parsers->handle(
                 $self->mech->get($self->transactions_uri),
-                qw{ TransactionSearch Login },
+                'TransactionSearch',
             );
         }
         catch (
@@ -94,17 +94,17 @@ class Finance::Bank::Bankwest::Session {
         # Assume that a CSV file has been returned.  Problems with the
         # supplied parameters would cause the form to be presented
         # again.  If nothing else, maybe a session problem?
-        return Finance::Bank::Bankwest::Parsers->parse(
+        return Finance::Bank::Bankwest::Parsers->handle(
             $self->mech->res,
-            qw{ TransactionExport TransactionSearch Login },
+            qw{ TransactionExport TransactionSearch },
         );
     }
 
 
     method logout {
-        Finance::Bank::Bankwest::Parsers->test(
+        Finance::Bank::Bankwest::Parsers->handle(
             $self->mech->get($self->logout_uri),
-            qw{ Logout Login },
+            'Logout',
         );
     }
 }
@@ -121,7 +121,7 @@ Finance::Bank::Bankwest::Session - operate on an established Bankwest Online Ban
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.1.
+This module is part of distribution Finance-Bank-Bankwest v1.2.2.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

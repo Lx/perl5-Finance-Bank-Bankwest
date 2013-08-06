@@ -1,14 +1,15 @@
 package Finance::Bank::Bankwest::Parser::Logout;
 {
-  $Finance::Bank::Bankwest::Parser::Logout::VERSION = '1.2.1';
+  $Finance::Bank::Bankwest::Parser::Logout::VERSION = '1.2.2';
 }
 # ABSTRACT: Online Banking logout web page parser
 
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
 use MooseX::Declare;
+use HTTP::Response::Switch::Handler 1.000000;
 class Finance::Bank::Bankwest::Parser::Logout
-    extends Finance::Bank::Bankwest::Parser
+    with HTTP::Response::Switch::Handler
 {
     use Web::Scraper qw{ scraper process };
 
@@ -17,9 +18,9 @@ class Finance::Bank::Bankwest::Parser::Logout
         process '#contentColumn', 'text' => 'TEXT';
     };
 
-    method TEST {
+    method handle {
         my $scrape = $scraper->scrape($self->response);
-        $self->bad_response
+        $self->decline
             if not defined $scrape->{'text'}
                 or index($scrape->{'text'}, $token) < 0;
     }
@@ -37,7 +38,7 @@ Finance::Bank::Bankwest::Parser::Logout - Online Banking logout web page parser
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.1.
+This module is part of distribution Finance-Bank-Bankwest v1.2.2.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 
@@ -54,11 +55,11 @@ as a Bankwest Online Banking logout web page.
 
 =item *
 
-L<Finance::Bank::Bankwest::Parser>
+L<Finance::Bank::Bankwest::Session/logout>
 
 =item *
 
-L<Finance::Bank::Bankwest::Session/logout>
+L<HTTP::Response::Switch::Handler>
 
 =back
 

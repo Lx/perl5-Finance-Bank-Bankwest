@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest::Error::NotLoggedIn::SubsequentLogin;
 {
-  $Finance::Bank::Bankwest::Error::NotLoggedIn::SubsequentLogin::VERSION = '1.2.1';
+  $Finance::Bank::Bankwest::Error::NotLoggedIn::SubsequentLogin::VERSION = '1.2.2';
 }
 # ABSTRACT: Bankwest session multiple login exception
 
@@ -28,7 +28,7 @@ Finance::Bank::Bankwest::Error::NotLoggedIn::SubsequentLogin - Bankwest session 
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.1.
+This module is part of distribution Finance-Bank-Bankwest v1.2.2.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 

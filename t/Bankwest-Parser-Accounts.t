@@ -3,7 +3,7 @@ use Test::More;
 
 run_tests(
     undef,
-    't::lib::Test::ParserSubclass' => {
+    't::lib::Test::Parser' => {
         parser      => 'Accounts',
         parse_ok    => 'acct-balances',
         parse_type  => 'Account',
@@ -15,7 +15,6 @@ run_tests(
             uncleared_funds       => '0.00',
             available_balance     => '4479.70',
         } ],
-        test_fail   => { 'google' => 'BadResponse' },
     },
 );
 done_testing;

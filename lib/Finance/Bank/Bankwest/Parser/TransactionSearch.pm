@@ -1,14 +1,15 @@
 package Finance::Bank::Bankwest::Parser::TransactionSearch;
 {
-  $Finance::Bank::Bankwest::Parser::TransactionSearch::VERSION = '1.2.1';
+  $Finance::Bank::Bankwest::Parser::TransactionSearch::VERSION = '1.2.2';
 }
 # ABSTRACT: transaction search page parser
 
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
 use MooseX::Declare;
+use HTTP::Response::Switch::Handler 1.000000;
 class Finance::Bank::Bankwest::Parser::TransactionSearch
-    extends Finance::Bank::Bankwest::Parser
+    with HTTP::Response::Switch::Handler
 {
     use Finance::Bank::Bankwest::Error::ExportFailed ();
     use Finance::Bank::Bankwest::Error::ExportFailed::UnknownReason ();
@@ -30,10 +31,10 @@ class Finance::Bank::Bankwest::Parser::TransactionSearch
         process '#_ctl0_ContentMain_valToDate',
             'tdate_style' => '@style';
     };
-    method TEST {
+    method handle {
         my $scrape = $scraper->scrape($self->response);
 
-        $self->bad_response if not $scrape->{'heading'}
+        $self->decline if not $scrape->{'heading'}
             or $scrape->{'heading'} !~ /^\s*Transaction\s+Search\s*$/x;
 
         my %ef;
@@ -74,7 +75,7 @@ Finance::Bank::Bankwest::Parser::TransactionSearch - transaction search page par
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.1.
+This module is part of distribution Finance-Bank-Bankwest v1.2.2.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 
@@ -114,7 +115,7 @@ L<Finance::Bank::Bankwest::Error::ExportFailed::UnknownReason>
 
 =item *
 
-L<Finance::Bank::Bankwest::Parser>
+L<HTTP::Response::Switch::Handler>
 
 =back
 

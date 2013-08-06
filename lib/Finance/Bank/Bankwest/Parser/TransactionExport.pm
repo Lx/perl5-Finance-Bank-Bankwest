@@ -1,25 +1,24 @@
 package Finance::Bank::Bankwest::Parser::TransactionExport;
 {
-  $Finance::Bank::Bankwest::Parser::TransactionExport::VERSION = '1.2.1';
+  $Finance::Bank::Bankwest::Parser::TransactionExport::VERSION = '1.2.2';
 }
 # ABSTRACT: transaction CSV export parser
 
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
 use MooseX::Declare;
+use HTTP::Response::Switch::Handler 1.000000;
 class Finance::Bank::Bankwest::Parser::TransactionExport
-    extends Finance::Bank::Bankwest::Parser
+    with HTTP::Response::Switch::Handler
 {
     use Finance::Bank::Bankwest::Transaction ();
     use IO::String ();
     use Text::CSV_XS 0.66 (); # for "empty_is_undef" attribute
 
-    method TEST {
-        $self->bad_response
+    method handle {
+        $self->decline
             if $self->response->headers->content_type ne 'text/csv';
-    }
 
-    method PARSE {
         my $io = IO::String->new( $self->response->content_ref );
         my $csv = Text::CSV_XS->new({
             auto_diag       => 2,
@@ -59,7 +58,7 @@ Finance::Bank::Bankwest::Parser::TransactionExport - transaction CSV export pars
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.1.
+This module is part of distribution Finance-Bank-Bankwest v1.2.2.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 
@@ -78,11 +77,11 @@ L<Finance::Bank::Bankwest::Transaction> objects.
 
 =item *
 
-L<Finance::Bank::Bankwest::Parser>
+L<Finance::Bank::Bankwest::Transaction>
 
 =item *
 
-L<Finance::Bank::Bankwest::Transaction>
+L<HTTP::Response::Switch::Handler>
 
 =back
 

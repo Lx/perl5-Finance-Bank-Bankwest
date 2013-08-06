@@ -1,4 +1,4 @@
-package t::lib::Test::ParserSubclass;
+package t::lib::Test::Parser;
 
 use Test::Routine;
 use Test::More;
@@ -32,7 +32,7 @@ test 'testing of acceptable data' => sub {
 
     my $response = $self->response_for( $self->test_ok );
     lives_ok
-        { $self->full_class->test($response); }
+        { $self->full_class->new( response => $response )->handle; }
         'testing must succeed for fixture ' . $self->test_ok;
 };
 
@@ -44,7 +44,10 @@ test 'parsing of acceptable data' => sub {
     my $response = $self->response_for( $self->parse_ok );
     my @results;
     lives_ok
-        { @results = $self->full_class->parse($response); }
+        {
+            @results
+                = $self->full_class->new( response => $response )->handle;
+        }
         'parsing must succeed for fixture ' . $self->parse_ok;
     is @results, @{ $self->parse },
         'the right number of results must be returned by the parse';
@@ -60,13 +63,24 @@ test 'parsing of acceptable data' => sub {
     }
 };
 
+test 'handler must decline Google fixture' => sub {
+    my $self = shift;
+    my $response = $self->response_for('google');
+    throws_ok
+        { $self->full_class->new( response => $response )->handle; }
+        'HTTP::Response::Switch::HandlerDeclinedResponse';
+};
+
 test 'exception throwing for certain test data' => sub {
     my $self = shift;
+    plan skip_all => 'this parser does not throw specific exceptions'
+        if not $self->test_fail;
+
     for my $fixture (sort keys %{ $self->test_fail }) {
         my $error_class = $self->test_fail->{$fixture};
         my $response = $self->response_for($fixture);
         throws_ok
-            { $self->full_class->parse($response); }
+            { $self->full_class->new( response => $response )->handle; }
             'Finance::Bank::Bankwest::Error::' . $error_class,
             "$error_class exception must be thrown for fixture $fixture";
     }

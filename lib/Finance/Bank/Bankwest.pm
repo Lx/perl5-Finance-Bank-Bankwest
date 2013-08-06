@@ -1,6 +1,6 @@
 package Finance::Bank::Bankwest;
 {
-  $Finance::Bank::Bankwest::VERSION = '1.2.1';
+  $Finance::Bank::Bankwest::VERSION = '1.2.2';
 }
 # ABSTRACT: check Bankwest accounts from Perl
 
@@ -31,7 +31,7 @@ Finance::Bank::Bankwest - check Bankwest accounts from Perl
 
 =head1 VERSION
 
-This module is part of distribution Finance-Bank-Bankwest v1.2.1.
+This module is part of distribution Finance-Bank-Bankwest v1.2.2.
 
 This distribution's version numbering follows the conventions defined at L<semver.org|http://semver.org/>.
 
@@ -128,9 +128,8 @@ progress on the request by the system.
 
 =head2 Source Code
 
-The source code for this distribution is available
-online in a L<Git|http://git-scm.com/> repository.
-Please feel welcome to contribute patches.
+The source code for this distribution is available online in a L<Git|http://git-scm.com/> repository.  Please feel welcome to contribute patches.
+
 
 L<https://github.com/lx/perl5-Finance-Bank-Bankwest>
 

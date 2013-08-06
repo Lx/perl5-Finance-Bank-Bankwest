@@ -10,10 +10,9 @@ with 't::lib::Util::ResponseFixtures';
 
 run_tests(
     undef,
-    't::lib::Test::ParserSubclass' => {
+    't::lib::Test::Parser' => {
         parser      => 'TransactionSearch',
         test_fail   => {
-            'google'        => 'BadResponse',
             'txn-search'    => 'ExportFailed::UnknownReason',
         },
     },
@@ -77,7 +76,7 @@ for (
         throws_ok
             {
                 Finance::Bank::Bankwest::Parser::TransactionSearch
-                    ->test($response);
+                    ->new( response => $response )->handle;
             }
             'Finance::Bank::Bankwest::Error::ExportFailed';
         my $e = $@;
