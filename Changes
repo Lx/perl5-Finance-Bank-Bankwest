@@ -2,6 +2,8 @@ Revision history for Perl extension Finance-Bank-Bankwest
 
 {{$NEXT}}
 
+  - Fix test failures on some Perl setups.
+
 1.2.4   2013-08-06
 
   - Correct distribution dependencies properly.

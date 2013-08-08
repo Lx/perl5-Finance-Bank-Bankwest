@@ -12,7 +12,7 @@ test 'parsers loaded when Parsers used' => sub {
     );
     use_ok('Finance::Bank::Bankwest::Parsers');
     ok(
-        is_loaded 'Finance::Bank::Bankwest::Parser::Login',
+        (is_loaded 'Finance::Bank::Bankwest::Parser::Login'),
         'Parser::Login must be loaded after Parsers used',
     );
 };
