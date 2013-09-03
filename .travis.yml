@@ -1,6 +1,6 @@
 language: perl
 install:
   # Listing of project dependencies may require some author tools.
-  - dzil authordeps | cpanm
-  - dzil listdeps | cpanm
+  - dzil authordeps | cpanm --notest
+  - dzil listdeps | cpanm --notest
 script: dzil test --release
