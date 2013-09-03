@@ -11,8 +11,27 @@ before_install:
    - git config --global user.name "TravisCI"
    - git config --global user.email $HOSTNAME":not-for-mail@travis-ci.org"
 install:
-   - cpanm --quiet --notest --skip-satisfied Dist::Zilla
-   - "dzil authordeps | grep -vP '[^\\w:]' | xargs -n 5 -P 10 cpanm --quiet --notest --skip-satisfied"
-   - "dzil listdeps   | grep -vP '[^\\w:]' | cpanm --verbose --skip-satisfied"
+   - export OLD_CPANM_OPT=$PERL_CPANM_OPT
+   - export PERL_CPANM_OPT='--mirror http://cpan.metacpan.org/ --mirror http://search.cpan.org/CPAN' $PERL_CPANM_OPT
+   - cpanm --verbose LXP/HTTP-Response-Switch-1.1.0.tar.gz
+   - cpanm --verbose GAAS/IO-String-0.01.tar.gz
+   - cpanm --verbose FLORA/MooseX-Declare-0.01.tar.gz
+   - cpanm --verbose RJBS/MooseX-OneArgNew-0.001.tar.gz
+   - cpanm --verbose DROLSKY/MooseX-StrictConstructor-0.01.tar.gz
+   - cpanm --verbose PHAYLON/MooseX-Types-0.01.tar.gz
+   - cpanm --verbose HMBRAND/Text-CSV_XS-0.66.tgz
+   - cpanm --verbose RJBS/Throwable-0.101110.tar.gz
+   - cpanm --verbose ASH/TryCatch-1.000000.tar.gz
+   - cpanm --verbose PETDANCE/WWW-Mechanize-0.30.tar.gz
+   - cpanm --verbose MIYAGAWA/Web-Scraper-0.01.tar.gz
+   - cpanm --verbose MSCHWERN/ExtUtils-MakeMaker-6.30.tar.gz
+   - cpanm --verbose TJENNESS/File-Temp-0.05.tar.gz
+   - cpanm --verbose KANE/Module-Loaded-0.01.tar.gz
+   - cpanm --verbose GBARR/Scalar-List-Utils-1.12.tar.gz
+   - cpanm --verbose ADIE/Test-Exception-0.07.tar.gz
+   - cpanm --verbose MSCHWERN/Test-More-0.01.tar.gz
+   - cpanm --verbose RJBS/Test-Routine-0.001.tar.gz
+   - cpanm --verbose CORION/parent-0.215.tar.gz
+   - export PERL_CPANM_OPT=$OLD_CPANM_OPT
 script:
    - dzil smoke --release --author
