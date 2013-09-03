@@ -6,5 +6,7 @@ install:
   - dzil authordeps | cpanm --notest
   - dzil listdeps | cpanm --notest
   - cpanm --notest Test::Perl::Critic Test::CPAN::Meta Pod::Coverage::TrustPod
-  - sudo apt-get install aspell
+  # TODO: find Australian/British English dictionary, so things like
+  # "online," "cheque" and "dishonoured" are deemed acceptable.
+  # - sudo apt-get install aspell
 script: dzil test --verbose --release
