@@ -19,9 +19,9 @@ install:
    - cpanm --verbose RJBS/MooseX-OneArgNew-0.001.tar.gz
    - cpanm --verbose DROLSKY/MooseX-StrictConstructor-0.13.tar.gz
    - cpanm --verbose PHAYLON/MooseX-Types-0.01.tar.gz
-   - cpanm --verbose HMBRAND/Text-CSV_XS-0.90.tgz
+   - cpanm --verbose HMBRAND/Text-CSV_XS-0.88.tgz
    - cpanm --verbose RJBS/Throwable-0.101110.tar.gz
-   - cpanm --verbose ASH/TryCatch-1.002000.tar.gz
+   - cpanm --verbose ASH/TryCatch-1.003000.tar.gz
    - cpanm --verbose PETDANCE/WWW-Mechanize-0.30.tar.gz
    - cpanm --verbose MIYAGAWA/Web-Scraper-0.01.tar.gz
    - cpanm --verbose MSCHWERN/ExtUtils-MakeMaker-6.30.tar.gz
