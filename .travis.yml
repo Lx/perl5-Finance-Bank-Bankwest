@@ -17,7 +17,7 @@ install:
    - cpanm --verbose GAAS/IO-String-0.03.tar.gz
    - cpanm --verbose FLORA/MooseX-Declare-0.35.tar.gz
    - cpanm --verbose RJBS/MooseX-OneArgNew-0.001.tar.gz
-   - cpanm --verbose DROLSKY/MooseX-StrictConstructor-0.12.tar.gz
+   - cpanm --verbose DROLSKY/MooseX-StrictConstructor-0.13.tar.gz
    - cpanm --verbose PHAYLON/MooseX-Types-0.01.tar.gz
    - cpanm --verbose HMBRAND/Text-CSV_XS-0.83.tgz
    - cpanm --verbose RJBS/Throwable-0.101110.tar.gz
