@@ -1,21 +1,18 @@
-# https://github.com/mjgardner/svn-simple-hook/blob/master/.travis.yml
-
 language: perl
 perl:
-  - '5.19'
-  - '5.18'
-  - '5.16'
-  - '5.14'
-  - '5.12'
-  - '5.10'
-  # Dist::Zilla::Plugin::Git requires Perl v5.10+.
-  # - '5.8'
+   - 5.19
+   - 5.18
+   - 5.16
+   - 5.14
+   - 5.12
+   - 5.10
+before_install:
+   - export AUTOMATED_TESTING=1 HARNESS_OPTIONS=j10:c HARNESS_TIMER=1
+   - git config --global user.name "TravisCI"
+   - git config --global user.email $HOSTNAME":not-for-mail@travis-ci.org"
 install:
-  # Listing of project dependencies may require some author tools.
-  - dzil authordeps | cpanm --verbose --notest
-  - dzil listdeps | cpanm --verbose --notest
-  - cpanm --notest Test::Perl::Critic Test::CPAN::Meta Pod::Coverage::TrustPod
-  # TODO: find Australian/British English dictionary, so things like
-  # "online," "cheque" and "dishonoured" are deemed acceptable.
-  # - sudo apt-get install aspell
-script: dzil test --verbose --release
+   - cpanm --quiet --notest --skip-satisfied Dist::Zilla
+   - "dzil authordeps | grep -vP '[^\\w:]' | xargs -n 5 -P 10 cpanm --quiet --notest --skip-satisfied"
+   - "dzil listdeps   | grep -vP '[^\\w:]' | cpanm --verbose --skip-satisfied"
+script:
+   - dzil smoke --release --author
