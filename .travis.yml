@@ -6,4 +6,5 @@ install:
   - dzil authordeps | cpanm --notest
   - dzil listdeps | cpanm --notest
   - cpanm --notest Test::Perl::Critic Test::CPAN::Meta Pod::Coverage::TrustPod
+  - sudo apt-get install aspell
 script: dzil test --release
