@@ -1,6 +1,9 @@
+# https://github.com/mjgardner/svn-simple-hook/blob/master/.travis.yml
+
 language: perl
 install:
   # Listing of project dependencies may require some author tools.
   - dzil authordeps | cpanm --notest
   - dzil listdeps | cpanm --notest
+  - cpanm --notest Test::Perl::Critic Test::CPAN::Meta Pod::Coverage::TrustPod
 script: dzil test --release
