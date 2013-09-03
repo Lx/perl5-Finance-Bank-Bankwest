@@ -11,8 +11,8 @@ perl:
   - 5.8
 install:
   # Listing of project dependencies may require some author tools.
-  - dzil authordeps | cpanm --notest
-  - dzil listdeps | cpanm --notest
+  - dzil authordeps | cpanm --verbose --notest
+  - dzil listdeps | cpanm --verbose --notest
   - cpanm --notest Test::Perl::Critic Test::CPAN::Meta Pod::Coverage::TrustPod
   # TODO: find Australian/British English dictionary, so things like
   # "online," "cheque" and "dishonoured" are deemed acceptable.
