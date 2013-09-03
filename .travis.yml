@@ -1,3 +1,3 @@
 language: perl
-install: dzil authordeps | cpanm
+install: (dzil authordeps && dzil listdeps) | cpanm
 script: dzil test --release
