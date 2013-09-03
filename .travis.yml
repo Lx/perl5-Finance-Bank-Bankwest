@@ -1,6 +1,14 @@
 # https://github.com/mjgardner/svn-simple-hook/blob/master/.travis.yml
 
 language: perl
+perl:
+  - 5.19
+  - 5.18
+  - 5.16
+  - 5.14
+  - 5.12
+  - 5.10
+  - 5.8
 install:
   # Listing of project dependencies may require some author tools.
   - dzil authordeps | cpanm --notest
