@@ -56,7 +56,7 @@ class Finance::Bank::Bankwest::Session {
     use Finance::Bank::Bankwest::Parsers ();
     use MooseX::StrictConstructor; # no exports
     use MooseX::Types; # for "class_type"
-    use TryCatch 1.003001; # for "try" and "catch"; 1.003000 fails
+    use TryCatch 1.003002; # for "try" and "catch"; oldest for Travis CI
 
     # Allow instantiation via ->new($mech).
     class_type 'WWW::Mechanize';
