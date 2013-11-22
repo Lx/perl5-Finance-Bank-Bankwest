@@ -25,7 +25,7 @@ L<Throwable::Error>
 =cut
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
-use MooseX::Declare 0.02; # earlier versions fail their tests
+use MooseX::Declare 0.21; # for "dirty" class trait
 use Throwable::Error 0.101110; # for bug fix
 class Finance::Bank::Bankwest::Error
     extends Throwable::Error
