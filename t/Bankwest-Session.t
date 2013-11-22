@@ -1,4 +1,4 @@
-use Test::Routine;
+use Test::Routine 0.02; # earlier versions fail their tests
 use Test::Routine::Util;
 use Test::More;
 use Test::Exception;
