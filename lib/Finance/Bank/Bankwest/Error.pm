@@ -26,7 +26,7 @@ L<Throwable::Error>
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
 use MooseX::Declare 0.06; # for auto "strict" and "warnings"
-use MooseX::Declare 0.23; # nothing earlier works under Travis
+use MooseX::Declare 0.24; # nothing earlier works under Travis
 use Throwable::Error 0.101110; # for bug fix
 class Finance::Bank::Bankwest::Error
     extends Throwable::Error
