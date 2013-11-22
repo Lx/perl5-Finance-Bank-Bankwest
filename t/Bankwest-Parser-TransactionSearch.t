@@ -1,6 +1,6 @@
 use Test::Routine;
 use Test::Routine::Util;
-use Test::More;
+use Test::More 0.31; # for "is_deeply"
 use Test::Exception;
 
 use Finance::Bank::Bankwest::Parser::TransactionSearch ();
