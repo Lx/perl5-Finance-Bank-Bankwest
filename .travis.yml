@@ -15,7 +15,7 @@ install:
    - export PERL_CPANM_OPT='--mirror http://cpan.metacpan.org/ --mirror http://search.cpan.org/CPAN' $PERL_CPANM_OPT
    - cpanm --verbose TJENNESS/File-Temp-0.05.tar.gz
    - cpanm --verbose LXP/HTTP-Response-Switch-1.1.0.tar.gz
-   - cpanm --verbose GAAS/IO-String-0.01.tar.gz
+   - cpanm --verbose GAAS/IO-String-0.03.tar.gz
    - cpanm --verbose KANE/Module-Loaded-0.01.tar.gz
    - cpanm --verbose FLORA/MooseX-Declare-0.01.tar.gz
    - cpanm --verbose RJBS/MooseX-OneArgNew-0.001.tar.gz
@@ -33,7 +33,7 @@ install:
    - cpanm --verbose CORION/parent-0.215.tar.gz
    - cpanm --verbose --installdeps TJENNESS/File-Temp-0.05.tar.gz
    - cpanm --verbose --installdeps LXP/HTTP-Response-Switch-1.1.0.tar.gz
-   - cpanm --verbose --installdeps GAAS/IO-String-0.01.tar.gz
+   - cpanm --verbose --installdeps GAAS/IO-String-0.03.tar.gz
    - cpanm --verbose --installdeps KANE/Module-Loaded-0.01.tar.gz
    - cpanm --verbose --installdeps FLORA/MooseX-Declare-0.01.tar.gz
    - cpanm --verbose --installdeps RJBS/MooseX-OneArgNew-0.001.tar.gz
