@@ -4,7 +4,7 @@ use Test::More;
 
 use Finance::Bank::Bankwest::Error::BadResponse ();
 use HTTP::Response ();
-use Scalar::Util 'refaddr';
+use Scalar::Util 1.13 'refaddr'; # earlier versions fail Travis
 
 my $r = HTTP::Response->new;
 
