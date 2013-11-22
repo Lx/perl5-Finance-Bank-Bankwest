@@ -19,7 +19,7 @@ install:
    - cpanm --verbose KANE/Module-Loaded-0.01.tar.gz
    - cpanm --verbose FLORA/MooseX-Declare-0.24.tar.gz
    - cpanm --verbose RJBS/MooseX-OneArgNew-0.001.tar.gz
-   - cpanm --verbose DROLSKY/MooseX-StrictConstructor-0.03.tar.gz
+   - cpanm --verbose DROLSKY/MooseX-StrictConstructor-0.04.tar.gz
    - cpanm --verbose PHAYLON/MooseX-Types-0.01.tar.gz
    - cpanm --verbose GBARR/Scalar-List-Utils-1.12.tar.gz
    - cpanm --verbose ADIE/Test-Exception-0.07.tar.gz
@@ -37,7 +37,7 @@ install:
    - cpanm --verbose --installdeps KANE/Module-Loaded-0.01.tar.gz
    - cpanm --verbose --installdeps FLORA/MooseX-Declare-0.24.tar.gz
    - cpanm --verbose --installdeps RJBS/MooseX-OneArgNew-0.001.tar.gz
-   - cpanm --verbose --installdeps DROLSKY/MooseX-StrictConstructor-0.03.tar.gz
+   - cpanm --verbose --installdeps DROLSKY/MooseX-StrictConstructor-0.04.tar.gz
    - cpanm --verbose --installdeps PHAYLON/MooseX-Types-0.01.tar.gz
    - cpanm --verbose --installdeps GBARR/Scalar-List-Utils-1.12.tar.gz
    - cpanm --verbose --installdeps ADIE/Test-Exception-0.07.tar.gz
