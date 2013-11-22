@@ -23,18 +23,23 @@ class Finance::Bank::Bankwest::Parser::Accounts
     with HTTP::Response::Switch::Handler
 {
     use Finance::Bank::Bankwest::Account ();
-    use Web::Scraper qw{ scraper process };
+    use Web::Scraper qw{ scraper process result };
 
+    # The scraper must return data in two levels to distinguish between
+    # an unrecognised page and a recognised page with no accounts.
     my $scraper = scraper {
         process
-            '#_ctl0_ContentMain_grdBalances tbody tr',
-            'accts[]' => scraper {
-                process '//td[1]', 'name'               => 'TEXT';
-                process '//td[2]', 'number'             => 'TEXT';
-                process '//td[3]', 'balance'            => 'TEXT';
-                process '//td[4]', 'credit_limit'       => 'TEXT';
-                process '//td[5]', 'uncleared_funds'    => 'TEXT';
-                process '//td[6]', 'available_balance'  => 'TEXT';
+            '//*[@id = "_ctl0_ContentMain_grdBalances"]/tbody',
+            'table' => scraper {
+                process '//tr[ td[6] ]', 'accts[]' => scraper {
+                    process '//td[1]', 'name'               => 'TEXT';
+                    process '//td[2]', 'number'             => 'TEXT';
+                    process '//td[3]', 'balance'            => 'TEXT';
+                    process '//td[4]', 'credit_limit'       => 'TEXT';
+                    process '//td[5]', 'uncleared_funds'    => 'TEXT';
+                    process '//td[6]', 'available_balance'  => 'TEXT';
+                };
+                result 'accts';
             };
     };
 
@@ -42,15 +47,15 @@ class Finance::Bank::Bankwest::Parser::Accounts
         init_arg    => undef,
         lazy        => 1,
         is          => 'ro',
-        isa         => 'HashRef[ArrayRef[HashRef[Str]]]',
+        isa         => 'HashRef[Maybe[ArrayRef[HashRef[Str]]]]',
         default     => sub { $scraper->scrape( shift->response ) },
     );
 
     method handle {
-        $self->decline if not $self->scrape->{'accts'};
+        $self->decline if not exists $self->scrape->{'table'};
 
         my @accts;
-        for my $acct (@{ $self->scrape->{'accts'} }) {
+        for my $acct (@{ $self->scrape->{'table'} }) {
             for (qw{
                 balance
                 credit_limit

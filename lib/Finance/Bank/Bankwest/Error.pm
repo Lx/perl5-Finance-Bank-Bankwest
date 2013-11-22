@@ -25,12 +25,12 @@ L<Throwable::Error>
 =cut
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
-use MooseX::Declare 0.35; # the only working version for Travis CI
+use MooseX::Declare;
 use Throwable::Error 0.101110; # for bug fix
 class Finance::Bank::Bankwest::Error
     extends Throwable::Error
 {
-    use MooseX::StrictConstructor 0.13; # no exports; oldest by Travis CI
+    use MooseX::StrictConstructor; # no exports
 
 =method MESSAGE
 
