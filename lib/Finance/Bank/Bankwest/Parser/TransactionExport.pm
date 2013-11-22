@@ -25,7 +25,7 @@ class Finance::Bank::Bankwest::Parser::TransactionExport
     with HTTP::Response::Switch::Handler
 {
     use Finance::Bank::Bankwest::Transaction ();
-    use IO::String ();
+    use IO::String 0.03 (); # earlier versions fail their tests
     use Text::CSV_XS 0.66 (); # for "empty_is_undef" attribute
 
     method handle {
