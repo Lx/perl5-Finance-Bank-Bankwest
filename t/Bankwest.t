@@ -1,6 +1,6 @@
 use Test::Routine;
 use Test::Routine::Util;
-use Test::More;
+use Test::More 0.17; # for "isa_ok"
 use Test::Exception;
 
 with 't::lib::Util::ResponseFixtures';
