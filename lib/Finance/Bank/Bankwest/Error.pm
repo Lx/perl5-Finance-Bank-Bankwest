@@ -31,7 +31,7 @@ use Throwable::Error 0.101110; # for bug fix
 class Finance::Bank::Bankwest::Error
     extends Throwable::Error
 {
-    use MooseX::StrictConstructor 0.04; # no exports; earlier versions fail
+    use MooseX::StrictConstructor 0.05; # no exports; earlier versions fail
 
 =method MESSAGE
 
