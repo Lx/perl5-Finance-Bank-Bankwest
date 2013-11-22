@@ -30,7 +30,7 @@ L<HTTP::Response::Switch::Handler>
 =cut
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
-use MooseX::Declare;
+use MooseX::Declare 0.06; # for auto "strict" and "warnings"
 use HTTP::Response::Switch::Handler 1.000000;
 class Finance::Bank::Bankwest::Parser::TransactionSearch
     with HTTP::Response::Switch::Handler

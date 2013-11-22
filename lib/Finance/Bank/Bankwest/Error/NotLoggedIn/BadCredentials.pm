@@ -18,7 +18,7 @@ L<Finance::Bank::Bankwest::SessionFromLogin/session>
 =cut
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
-use MooseX::Declare;
+use MooseX::Declare 0.06; # for auto "strict" and "warnings"
 class Finance::Bank::Bankwest::Error::NotLoggedIn::BadCredentials
     extends Finance::Bank::Bankwest::Error::NotLoggedIn
 {

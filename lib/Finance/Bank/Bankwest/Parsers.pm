@@ -24,7 +24,7 @@ L<HTTP::Response::Switch>
 =cut
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireFinalReturn)
-use MooseX::Declare;
+use MooseX::Declare 0.06; # for auto "strict" and "warnings"
 use HTTP::Response::Switch 1.001000; # for exception class loading
 class Finance::Bank::Bankwest::Parsers
     with HTTP::Response::Switch

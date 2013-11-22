@@ -29,7 +29,7 @@ L<Finance::Bank::Bankwest::Parsers>
 =cut
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
-use MooseX::Declare;
+use MooseX::Declare 0.06; # for auto "strict" and "warnings"
 class Finance::Bank::Bankwest::Error::BadResponse
     extends Finance::Bank::Bankwest::Error
     with Finance::Bank::Bankwest::Error::WithResponse

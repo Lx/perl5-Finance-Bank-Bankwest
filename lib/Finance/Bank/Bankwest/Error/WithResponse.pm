@@ -22,7 +22,7 @@ L<Finance::Bank::Bankwest::Error::NotLoggedIn::UnknownReason>
 =cut
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
-use MooseX::Declare;
+use MooseX::Declare 0.06; # for auto "strict" and "warnings"
 role Finance::Bank::Bankwest::Error::WithResponse {
 
     use MooseX::Types; # for "class_type"

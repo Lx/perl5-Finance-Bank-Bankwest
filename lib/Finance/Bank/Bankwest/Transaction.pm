@@ -178,7 +178,7 @@ L<Finance::Bank::Bankwest::Session/transactions>
 =cut
 
 ## no critic (RequireUseStrict, RequireUseWarnings, RequireEndWithOne)
-use MooseX::Declare;
+use MooseX::Declare 0.21; # for "dirty" class trait
 class Finance::Bank::Bankwest::Transaction is dirty {
 
     use MooseX::StrictConstructor; # no exports
