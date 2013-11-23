@@ -26,7 +26,7 @@ class Finance::Bank::Bankwest::Parser::TransactionExport
 {
     use Finance::Bank::Bankwest::Transaction ();
     use IO::String 0.03 (); # earlier versions fail their tests
-    use Text::CSV_XS 0.71 (); # earlier versions fail their tests
+    use Text::CSV_XS 0.72 (); # earlier versions fail their tests
 
     method handle {
         $self->decline
