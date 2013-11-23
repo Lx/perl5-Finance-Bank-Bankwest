@@ -1,6 +1,6 @@
 use Test::Routine;
 use Test::Routine::Util;
-use Test::More 0.71; # for no "Test::Soundex" dependency
+use Test::More 0.72; # earlier versions fail tests
 use Test::Exception;
 
 use Finance::Bank::Bankwest::Parser::TransactionSearch ();
