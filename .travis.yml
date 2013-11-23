@@ -23,8 +23,8 @@ install:
    - cpanm --verbose PHAYLON/MooseX-Types-0.01.tar.gz
    - cpanm --verbose GBARR/Scalar-List-Utils-1.14.tar.gz
    - cpanm --verbose ADIE/Test-Exception-0.07.tar.gz
-   - cpanm --verbose MSCHWERN/Test-Simple-0.77.tar.gz
-   - cpanm --verbose HMBRAND/Text-CSV_XS-0.69.tgz
+   - cpanm --verbose MSCHWERN/Test-Simple-0.78.tar.gz
+   - cpanm --verbose HMBRAND/Text-CSV_XS-0.70.tgz
    - cpanm --verbose RJBS/Throwable-0.101110.tar.gz
    - cpanm --verbose ASH/TryCatch-1.000000.tar.gz
    - cpanm --verbose PETDANCE/WWW-Mechanize-0.30.tar.gz
@@ -40,8 +40,8 @@ install:
    - cpanm --verbose --installdeps PHAYLON/MooseX-Types-0.01.tar.gz
    - cpanm --verbose --installdeps GBARR/Scalar-List-Utils-1.14.tar.gz
    - cpanm --verbose --installdeps ADIE/Test-Exception-0.07.tar.gz
-   - cpanm --verbose --installdeps MSCHWERN/Test-Simple-0.77.tar.gz
-   - cpanm --verbose --installdeps HMBRAND/Text-CSV_XS-0.69.tgz
+   - cpanm --verbose --installdeps MSCHWERN/Test-Simple-0.78.tar.gz
+   - cpanm --verbose --installdeps HMBRAND/Text-CSV_XS-0.70.tgz
    - cpanm --verbose --installdeps RJBS/Throwable-0.101110.tar.gz
    - cpanm --verbose --installdeps ASH/TryCatch-1.000000.tar.gz
    - cpanm --verbose --installdeps PETDANCE/WWW-Mechanize-0.30.tar.gz
