@@ -25,8 +25,16 @@ interface.
 
 =attr number
 
-The full account number of the account in C<BBB-BBB AAAAAAA> format,
-where C<B> is a BSB digit and C<A> is an account digit.
+The full account number of the account in one of the following formats:
+
+=begin :list
+
+*   C<BBB-BBB AAAAAAA> for accounts with a BSB number, where C<B> is a
+    BSB digit and C<A> is an account digit; or
+
+*   C<#### #### #### ####> for credit card accounts.
+
+=end :list
 
 =attr balance
 

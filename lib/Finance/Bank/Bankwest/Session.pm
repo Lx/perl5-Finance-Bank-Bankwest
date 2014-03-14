@@ -155,10 +155,13 @@ The following arguments are accepted:
 = C<account>
 
     account => '303-111 0012345'
+    account => '5500 0000 0000 0004'
 
-The BSB and account numbers of a single account to which all returned
-transaction details belong.  Must be in C<BBB-BBB AAAAAAA> format where
-C<B> refers to a BSB digit and C<A> refers to an account digit.
+The full account number of a single account to which all returned
+transaction details belong.  Must be in the same format as the
+L<"number"|Finance::Bank::Bankwest::Account/number> attribute of the
+L<Account|Finance::Bank::Bankwest::Account> objects returned by
+L</accounts>.
 
 = C<from_date>
 
