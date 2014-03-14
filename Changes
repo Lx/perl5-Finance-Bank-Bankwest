@@ -2,6 +2,11 @@ Revision history for Perl extension Finance-Bank-Bankwest
 
 {{$NEXT}}
 
+  - Allow an undefined transaction code in Transaction objects, since
+    Bankwest does not return one in some cases ([rt.cpan.org #93739]).
+    Thanks to Owen Hollands for reporting this behaviour and providing
+    a patch.
+
   - Minor documentation adjustments.
 
 1.2.5   2013-08-08

@@ -34,7 +34,7 @@ test 'equals method false' => sub {
     for (
         [ date          => '30/12/2012'     ],
         [ narrative     => 'SOMETHING ELSE' ],
-        [ type          => 'ABC'            ],
+        [ type          => undef            ],
         [ amount        => undef            ],
         [ amount        => '34.50'          ],
         [ cheque_num    => '000000123'      ],

@@ -54,9 +54,12 @@ for fee notices or declined transactions).
 
 =attr type
 
-The transaction "type."  May be one of the following values (although
-Bankwest may not always assign the most relevant code to a particular
-transaction):
+The transaction "type."  Defined for every transaction in savings
+accounts (e.g. Zero Transaction).  Not defined for every transaction in
+credit card accounts.
+
+If defined, may be one of the following values (although Bankwest may
+not always assign the most relevant code to a particular transaction):
 
 =over 6
 
@@ -190,7 +193,7 @@ class Finance::Bank::Bankwest::Transaction is dirty {
         [ narrative     => 'Str'        ],
         [ cheque_num    => 'Maybe[Str]' ],
         [ amount        => 'Maybe[Num]' ],
-        [ type          => 'Str'        ],
+        [ type          => 'Maybe[Str]' ],
     ) {
         my ($attr, $type) = @$_;
         has $attr => ( isa => $type, is => 'ro', required => 1 );
