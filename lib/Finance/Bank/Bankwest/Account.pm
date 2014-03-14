@@ -2,7 +2,7 @@ package Finance::Bank::Bankwest::Account;
 # ABSTRACT: representation of a Bankwest account
 
 =for stopwords
-unfinalised
+BSB unfinalised
 
 =head1 SYNOPSIS
 

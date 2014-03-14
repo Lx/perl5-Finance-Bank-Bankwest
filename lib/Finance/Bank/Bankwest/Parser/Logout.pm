@@ -1,6 +1,9 @@
 package Finance::Bank::Bankwest::Parser::Logout;
 # ABSTRACT: Online Banking logout web page parser
 
+=for stopwords
+logout
+
 =head1 DESCRIPTION
 
 This module holds the logic for identifying an L<HTTP::Response> object
