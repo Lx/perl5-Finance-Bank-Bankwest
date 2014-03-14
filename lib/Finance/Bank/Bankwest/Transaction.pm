@@ -74,7 +74,7 @@ I<ATM deposit>
 
 =item DAU
 
-I<debit authorisation>
+I<debit authorisation> (i.e. "Authorisation Only" transactions)
 
 =item DEC
 
