@@ -30,6 +30,8 @@ transaction.
 
 =attr date_dt
 
+I<Added in v1.2.0.>
+
 The L</date> as a L<DateTime> instance with a floating time zone.
 
 I<require>-s the DateTime module when used.  C<use DateTime> in any
@@ -212,6 +214,8 @@ class Finance::Bank::Bankwest::Transaction is dirty {
     }
 
 =method equals
+
+I<Added in v1.1.0.>
 
     if ($this_txn->equals($other_txn)) {
         # $this_txn and $other_txn represent the exact same transaction
