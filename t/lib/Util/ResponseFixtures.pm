@@ -1,7 +1,7 @@
 use MooseX::Declare;
 role t::lib::Util::ResponseFixtures {
 
-    use URI::file ();
+    use URI::file 4.21 (); # for correct query string handling
     use WWW::Mechanize ();
 
     method uri_for(Str $basename) {
