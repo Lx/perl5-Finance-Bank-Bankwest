@@ -125,9 +125,22 @@ L<Finance::Bank::Bankwest::Error::WithResponse/response>.
             },
         );
 
-        # Does the result look like an Account Balances page?
-        # If not, determine and throw the appropriate exception.
-        Finance::Bank::Bankwest::Parsers->handle($ua->res, 'Accounts');
+        # In most cases the Account Balances page will be returned.
+        # Handle the occasional "service message" popping up first, but
+        # let any other exception be determined and propagated.
+        try {
+            Finance::Bank::Bankwest::Parsers->handle(
+                $ua->res,
+                qw{ Accounts ServiceMessage },
+            );
+        }
+        catch (Finance::Bank::Bankwest::Error::ServiceMessage $e) {
+            $ua->click('btnStartBanking');
+            Finance::Bank::Bankwest::Parsers->handle(
+                $ua->res,
+                qw{ Accounts },
+            );
+        }
 
         # If this point is reached, the session is established.
         return Finance::Bank::Bankwest::Session->new( $ua );

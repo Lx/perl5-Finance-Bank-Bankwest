@@ -25,6 +25,16 @@ test 'pass on correct input' => sub {
     isa_ok $sfl->session, 'Finance::Bank::Bankwest::Session';
 };
 
+test 'pass on correct input and service message intercept' => sub {
+    my $self = shift;
+    my $sfl = Finance::Bank::Bankwest::SessionFromLogin->new(
+        pan         => 'irrelevant',
+        access_code => 'irrelevant',
+        login_uri   => $self->uri_for('login-then-service-message'),
+    );
+    isa_ok $sfl->session, 'Finance::Bank::Bankwest::Session';
+};
+
 test 'fail if session passed in constructor' => sub {
     dies_ok { Finance::Bank::Bankwest::SessionFromLogin->new(
         pan         => 'irrelevant',

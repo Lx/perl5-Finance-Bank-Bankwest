@@ -2,6 +2,9 @@ Revision history for Perl extension Finance-Bank-Bankwest
 
 {{$NEXT}}
 
+  - Treat post-login "service message" pages as expected responses, and
+    skip over them ([rt.cpan.org #97916]).
+
 1.2.7   2014-06-08
 
   - Specify a minimum URI::file version, since earlier versions trigger
