@@ -2,6 +2,8 @@ Revision history for Perl extension Finance-Bank-Bankwest
 
 {{$NEXT}}
 
+1.2.8   2014-08-10
+
   - Treat post-login "service message" pages as expected responses, and
     skip over them ([rt.cpan.org #97916]).
 
